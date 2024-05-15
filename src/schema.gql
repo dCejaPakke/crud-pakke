@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  tasks: [Task!]
+}
+
+type Task {
+  id: Int!
+  title: String!
+  completed: Boolean!
+  user: User!
+}
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  tasks: [Task!]!
+  task(id: Int!): Task!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  updateTask(updateTaskInput: UpdateTaskInput!): Task!
+  removeTask(id: Int!): Task!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  id: Int!
+}
+
+input CreateTaskInput {
+  title: String!
+  completed: Boolean! = false
+  userId: Int!
+}
+
+input UpdateTaskInput {
+  title: String
+  completed: Boolean = false
+  userId: Int
+  id: Int!
+}
