@@ -8,7 +8,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 export class Task {
   @PrimaryGeneratedColumn()
   @Field(type => Int)
-  id: string;
+  id: number;
 
   @Column()
   @IsNotEmpty()
