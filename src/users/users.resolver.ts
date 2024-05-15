@@ -27,6 +27,12 @@ export class UsersResolver {
     return this.usersService.findOne(id);
   }
 
+  @ResolveField(returns => [Task])
+  tasks(@Parent() user: User) {
+    const { id } = user;
+    return this.usersService.findTasksByUserId(id);
+  }
+
   @Mutation(() => User)
   async updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
     return this.usersService.update(updateUserInput.id, updateUserInput);

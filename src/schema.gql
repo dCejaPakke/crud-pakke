@@ -13,6 +13,7 @@ type Task {
   id: Int!
   title: String!
   completed: Boolean!
+  userId: Int!
   user: User!
 }
 

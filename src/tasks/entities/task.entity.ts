@@ -19,6 +19,10 @@ export class Task {
   @Field()
   completed: boolean
 
+  @Field(type => Int)
+  userId: number;
+
+
   @ManyToOne(type => User, user => user.tasks)
   @Field(type => User)
   user: User;

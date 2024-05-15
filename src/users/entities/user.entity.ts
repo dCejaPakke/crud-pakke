@@ -19,7 +19,7 @@ export class User {
   @Field()
   email: string;
 
-  @OneToMany(type => Task, task => task.user)
+  @OneToMany(type => Task, task => task.user, {cascade: true})
   @Field(type => [Task], {nullable: true})
   tasks?: Task[];
 }
