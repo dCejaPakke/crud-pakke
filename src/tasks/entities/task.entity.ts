@@ -20,10 +20,11 @@ export class Task {
   completed: boolean
 
   @Field(type => Int)
+  @Column()
   userId: number;
 
 
-  @ManyToOne(type => User, user => user.tasks)
+  @ManyToOne(type => User, user => user.tasks, {onDelete: 'CASCADE'})
   @Field(type => User)
   user: User;
 }

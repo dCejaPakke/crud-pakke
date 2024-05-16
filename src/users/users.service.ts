@@ -60,10 +60,13 @@ export class UsersService {
     return await this.usersRepository.save(user);
   }
 
-  async remove(id: number): Promise<User> {
+  async remove(id: number): Promise<string> {
     const user = await this.usersRepository.findOne({
       where: {
         id,
+      },
+      relations: {
+        tasks: true,
       }
     })
 
@@ -76,7 +79,7 @@ export class UsersService {
 
     await this.usersRepository.remove(user);
 
-    return user;
+    return 'User deleted';
   }
 
   async findTasksByUserId(userId: number): Promise<Task[]> {
